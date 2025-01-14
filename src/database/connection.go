@@ -1,7 +1,6 @@
 package database
 
 import (
-	"first_app/configs"
 	"fmt"
 	"log"
 
@@ -12,7 +11,7 @@ import (
 var DB *gorm.DB
 
 func ConnectDatabase(){
-	cfg := configs.LoadDBConfig()
+	cfg := LoadDBConfig()
 
 	dsn := fmt.Sprintf(
         "host=%s user=%s password=%s dbname=%s port=%s sslmode=disable TimeZone=Asia/Shanghai",
@@ -26,7 +25,7 @@ func ConnectDatabase(){
 
 	DB = database
 
-	err = DB.AutoMigrate(&Users{})
+	err = DB.AutoMigrate(&Users{}, &Tokens{})
 	if err != nil {
 		log.Fatal("Failed to migrate database!", err)
 	}

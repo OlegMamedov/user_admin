@@ -1,4 +1,4 @@
-package routes
+package CRUD
 
 import (
 	"first_app/src/database"

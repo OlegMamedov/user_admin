@@ -1,4 +1,4 @@
-package routes
+package CRUD
 
 import (
 	"first_app/src/database"
@@ -34,11 +34,4 @@ func UpdateUser(c *gin.Context) {
 		"message": "User updated",
 		"user": user,
 	})
-}
-
-type UserUpdate struct {
-	Name string `json:"name"`
-	Password string `json:"password"`
-	Email string `json:"email"`
-	Age int `json:"age"`
 }

@@ -1,4 +1,4 @@
-package routes
+package CRUD
 
 import (
 	"first_app/src/database"
@@ -9,7 +9,7 @@ import (
 func GetListUsers(c *gin.Context) {
 	var users []database.Users
 
-	if err := database.DB.Find(&users).Error; err != nil {
+	if err := database.DB.Model(&database.Users{}).Find(&users).Error; err != nil {
 		c.JSON(404, gin.H{"error": "not found"})
 		return
 	}

@@ -2,7 +2,8 @@ package main
 
 import (
 	"first_app/src/database"
-	"first_app/src/routes"
+	"first_app/src/routes/CRUD"
+	"first_app/src/routes/auth"
 	"fmt"
 
 	"github.com/gin-gonic/gin"
@@ -15,10 +16,12 @@ func main() {
 
 	database.ConnectDatabase()
 
-	r.POST("/register", routes.InsertUser)
-	r.GET("/list", routes.GetListUsers)
-	r.DELETE("/delete", routes.DeleteUser)
-	r.PUT("/update", routes.UpdateUser)
+	r.POST("/create", CRUD.InsertUser)
+	r.GET("/list", CRUD.GetListUsers)
+	r.DELETE("/delete", CRUD.DeleteUser)
+	r.PUT("/update", CRUD.UpdateUser)
+	r.POST("/login", auth.Auth)
+	r.POST("/register", auth.Register)
 
 	r.Run()
 
